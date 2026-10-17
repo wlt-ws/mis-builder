@@ -10,6 +10,10 @@ from ..models.mis_report import TYPE_STR, SubKPITupleLengthError, SubKPIUnknownT
 from .common import try_xlsx_report
 
 
+# WLT: post_install statt at_install. At_install läuft der Test mitten im Laden
+# (vor späteren Buchhaltungsmodulen) und test_drilldown_action_name_with_account
+# sieht einen anderen Kontonamen; post_install ist er grün. Keine fachliche Änderung.
+@common.tagged("post_install", "-at_install")
 class TestMisReportInstance(common.HttpCase):
     """Basic integration test to exercise mis.report.instance.
 
